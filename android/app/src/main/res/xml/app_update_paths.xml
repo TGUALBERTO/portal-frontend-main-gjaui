@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Pastas que o AppUpdateFileProvider pode expor a outros apps. Só uma: a de
+  download da atualização, dentro do cache privado do app. O nome da pasta tem de
+  bater com AppUpdateConfig.cacheDirName (lib/src/features/app_update).
+-->
+<paths>
+    <cache-path name="app_update" path="app_update/" />
+</paths>

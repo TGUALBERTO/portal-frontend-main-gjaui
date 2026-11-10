@@ -1,0 +1,12 @@
+# Exceções justificadas à verificação de tokens (ADR 0005).
+# Cada item ignora as linhas de `file` que contêm `contains`.
+#
+# exceptions:
+#   - file: packages/gja_widgets/lib/src/<categoria>/<widget>/<arquivo>.dart
+#     contains: "Duration.zero"
+#     reason: "Ausência de animação é semântica, não visual."
+exceptions:
+  - file: packages/gja_widgets/lib/src/feedback_sobreposicoes/message_toast/gja_message_toast.dart
+    contains: "static const defaultDuration = Duration(seconds: 3);"
+    reason: "Tempo de exibição do aviso, o duration padrão do sap.m.MessageToast (3000 ms): é comportamento, não aparência, e não pode zerar com o movimento reduzido como os tokens de motion."
+

@@ -1,0 +1,5 @@
+# Etiquetas dos testes de gja_widgets.
+tags:
+  # Goldens: referência gerada no Windows (ADR 0008). O pipeline Linux os
+  # exclui com `--exclude-tags golden` até existir uma referência Linux.
+  golden:

@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Autenticação</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        text-align: center;
+        padding: 4rem 1rem;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Autenticação concluída</h2>
+    <p>Você já pode fechar esta janela e voltar para o aplicativo.</p>
+    <script>
+      (function () {
+        var params = new URLSearchParams(window.location.search);
+        var payload = {
+          type: "ms-auth-callback",
+          code: params.get("code"),
+          state: params.get("state"),
+          error: params.get("error"),
+          error_description: params.get("error_description"),
+        };
+        if (window.opener) {
+          // Restringe o destino à origem que abriu o popup.
+          window.opener.postMessage(payload, window.location.origin);
+          window.close();
+        }
+      })();
+    </script>
+  </body>
+</html>

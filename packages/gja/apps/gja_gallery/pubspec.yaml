@@ -1,0 +1,19 @@
+name: gja_gallery
+description: "Galeria de demonstração dos componentes GJA."
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: ^3.8.0
+  flutter: ">=3.32.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # Primitivos para a marca de exemplo da página "Tema" (aplicações podem usá-los).
+  gja_foundation: ^0.0.1
+  gja_ui: ^0.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter

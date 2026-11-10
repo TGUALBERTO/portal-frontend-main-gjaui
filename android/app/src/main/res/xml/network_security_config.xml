@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Android 9+ bloqueia HTTP puro por padrão. Dois backends internos ainda são
+  HTTP e precisam ser liberados explicitamente:
+
+  - rebic.com.br  -> SAP Gateway da Bandeirantes (GOIS*001:8000)
+  - gowwarm001    -> webservices COMMAV da Portaria
+
+  A liberação é por domínio, não global: o resto do app continua exigindo TLS.
+  Quando esses hosts ganharem HTTPS, remover o `domain` correspondente.
+-->
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">rebic.com.br</domain>
+        <domain includeSubdomains="true">gowwarm001</domain>
+    </domain-config>
+</network-security-config>

@@ -1,0 +1,1180 @@
+# Catálogo de componentes do framework GJA (fonte da verdade).
+#
+# Mantido por toda change que cria, altera ou remove um item
+# (spec gja/spec-governance, requisito "Catálogo de componentes").
+# Verificado por `dart run gja_checks catalog`.
+#
+# Campos:
+#   id          caminho da spec em openspec/specs/
+#   name        nome público
+#   kind        widget | foundation | core
+#   category    kebab-case; para widgets, define lib/src/<categoria>/ em gja_widgets
+#   priority    P0 (núcleo mínimo) | P1 (essenciais) | P2 (dados) | P3 (avançados)
+#   phase       fase de implementação (1 a 5)
+#   status      planned | specified | implemented | deprecated
+#   depends_on  ids das specs das quais o item depende (as dependências implícitas
+#               de todo widget, theming, accessibility e GjaTheme, são omitidas)
+#   proposed    true para itens adicionados além da lista original da solicitação
+version: 1
+items:
+
+  # --- Fundamentos ---
+  - id: gja/foundation/design-tokens
+    name: "Design tokens"
+    kind: foundation
+    category: fundamentos
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on: []
+  - id: gja/foundation/color
+    name: "Cores semânticas"
+    kind: foundation
+    category: fundamentos
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/design-tokens
+  - id: gja/foundation/typography
+    name: "Tipografia"
+    kind: foundation
+    category: fundamentos
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/design-tokens
+  - id: gja/foundation/spacing
+    name: "Espaçamentos"
+    kind: foundation
+    category: fundamentos
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/design-tokens
+  - id: gja/foundation/radius
+    name: "Raios de borda"
+    kind: foundation
+    category: fundamentos
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/design-tokens
+  - id: gja/foundation/shadows
+    name: "Sombras"
+    kind: foundation
+    category: fundamentos
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/design-tokens
+      - gja/foundation/color
+  - id: gja/foundation/density
+    name: "Densidade"
+    kind: foundation
+    category: fundamentos
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/spacing
+      - gja/foundation/typography
+  - id: gja/foundation/breakpoints
+    name: "Breakpoints"
+    kind: foundation
+    category: fundamentos
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/design-tokens
+  - id: gja/foundation/interaction-states
+    name: "Estados visuais"
+    kind: foundation
+    category: fundamentos
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/color
+  - id: gja/foundation/iconography
+    name: "Ícones"
+    kind: foundation
+    category: fundamentos
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/design-tokens
+  - id: gja/foundation/accessibility
+    name: "Convenções de acessibilidade"
+    kind: foundation
+    category: fundamentos
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/density
+  - id: gja/foundation/theming
+    name: "Temas claro/escuro e personalização"
+    kind: foundation
+    category: fundamentos
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/design-tokens
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/spacing
+      - gja/foundation/radius
+      - gja/foundation/shadows
+      - gja/foundation/density
+      - gja/foundation/breakpoints
+      - gja/foundation/interaction-states
+      - gja/foundation/iconography
+      - gja/foundation/accessibility
+
+  # --- Núcleo ---
+  - id: gja/core/interaction
+    name: "Interação e foco"
+    kind: core
+    category: nucleo
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/interaction-states
+      - gja/foundation/accessibility
+  - id: gja/core/localization
+    name: "Localização"
+    kind: core
+    category: nucleo
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on: []
+  - id: gja/core/responsive
+    name: "Responsividade"
+    kind: core
+    category: nucleo
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/breakpoints
+      - gja/foundation/density
+  - id: gja/core/overlay
+    name: "Sobreposições"
+    kind: core
+    category: nucleo
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/core/interaction
+      - gja/core/localization
+      - gja/foundation/color
+  - id: gja/core/validation
+    name: "Validação"
+    kind: core
+    category: nucleo
+    priority: P1
+    phase: 2
+    status: planned
+    depends_on:
+      - gja/core/localization
+  - id: gja/core/data-source
+    name: "Contrato de dados"
+    kind: core
+    category: nucleo
+    priority: P2
+    phase: 3
+    status: planned
+    depends_on:
+      - gja/core/localization
+
+  # --- Widgets ---
+  - id: gja/widgets/gja-theme
+    name: "GjaTheme"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/theming
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/density
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-app
+    name: "GjaApp"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-theme
+      - gja/core/localization
+      - gja/core/interaction
+      - gja/core/overlay
+      - gja/core/responsive
+  - id: gja/widgets/gja-text
+    name: "GjaText"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/typography
+      - gja/foundation/color
+      - gja/foundation/theming
+      - gja/foundation/density
+      - gja/foundation/accessibility
+    proposed: true
+  - id: gja/widgets/gja-title
+    name: "GjaTitle"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/typography
+      - gja/foundation/color
+      - gja/foundation/theming
+      - gja/foundation/density
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-label
+    name: "GjaLabel"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/core/localization
+      - gja/foundation/typography
+      - gja/foundation/color
+      - gja/foundation/theming
+      - gja/foundation/density
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-icon
+    name: "GjaIcon"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/iconography
+      - gja/foundation/color
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+    proposed: true
+  - id: gja/widgets/gja-spacing
+    name: "GjaSpacing"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/theming
+  - id: gja/widgets/gja-container
+    name: "GjaContainer"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/color
+      - gja/foundation/radius
+      - gja/foundation/shadows
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/theming
+      - gja/widgets/gja-spacing
+  - id: gja/widgets/gja-hbox
+    name: "GjaHBox"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-spacing
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/theming
+  - id: gja/widgets/gja-vbox
+    name: "GjaVBox"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-hbox
+      - gja/widgets/gja-spacing
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/theming
+  - id: gja/widgets/gja-separator
+    name: "GjaSeparator"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/color
+      - gja/foundation/density
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-responsive-layout
+    name: "GjaResponsiveLayout"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/core/responsive
+      - gja/foundation/breakpoints
+      - gja/foundation/theming
+  - id: gja/widgets/gja-grid
+    name: "GjaGrid"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/core/responsive
+      - gja/widgets/gja-spacing
+      - gja/foundation/breakpoints
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/theming
+  - id: gja/widgets/gja-tool-page
+    name: "GjaToolPage"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-app
+      - gja/widgets/gja-container
+      - gja/core/responsive
+      - gja/foundation/color
+      - gja/foundation/design-tokens
+      - gja/foundation/breakpoints
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-shell-bar
+    name: "GjaShellBar"
+    kind: widget
+    category: fundacao-layout
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-menu
+      - gja/widgets/gja-popover
+      - gja/widgets/gja-tooltip
+      - gja/widgets/gja-button
+      - gja/widgets/gja-avatar
+      - gja/widgets/gja-badge
+      - gja/widgets/gja-title
+      - gja/widgets/gja-container
+      - gja/core/interaction
+      - gja/core/localization
+      - gja/core/responsive
+      - gja/foundation/color
+      - gja/foundation/shadows
+      - gja/foundation/spacing
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/breakpoints
+      - gja/foundation/density
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-bar
+    name: "GjaBar"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/foundation/color
+      - gja/foundation/shadows
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/radius
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-page
+    name: "GjaPage"
+    kind: widget
+    category: fundacao-layout
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-bar
+      - gja/widgets/gja-title
+      - gja/widgets/gja-button
+      - gja/widgets/gja-container
+      - gja/widgets/gja-tool-page
+      - gja/core/interaction
+      - gja/core/localization
+      - gja/core/responsive
+      - gja/foundation/color
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/breakpoints
+      - gja/foundation/iconography
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-card-header
+    name: "GjaCardHeader"
+    kind: widget
+    category: fundacao-layout
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-title
+      - gja/widgets/gja-avatar
+      - gja/core/interaction
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/spacing
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-card
+    name: "GjaCard"
+    kind: widget
+    category: fundacao-layout
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-container
+      - gja/widgets/gja-separator
+      - gja/widgets/gja-card-header
+      - gja/widgets/gja-title
+      - gja/foundation/color
+      - gja/foundation/radius
+      - gja/foundation/shadows
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-panel
+    name: "GjaPanel"
+    kind: widget
+    category: fundacao-layout
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/core/interaction
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/design-tokens
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-button
+    name: "GjaButton"
+    kind: widget
+    category: acoes-navegacao
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/core/interaction
+      - gja/core/localization
+      - gja/widgets/gja-progress-indicator
+      - gja/widgets/gja-tooltip
+      - gja/foundation/interaction-states
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/density
+      - gja/foundation/spacing
+      - gja/foundation/radius
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-link
+    name: "GjaLink"
+    kind: widget
+    category: acoes-navegacao
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/core/interaction
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/interaction-states
+      - gja/foundation/radius
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-menu
+    name: "GjaMenu"
+    kind: widget
+    category: acoes-navegacao
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-dropdown
+      - gja/widgets/gja-popover
+      - gja/widgets/gja-separator
+      - gja/widgets/gja-icon
+      - gja/core/interaction
+      - gja/foundation/color
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/typography
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-toolbar
+    name: "GjaToolbar"
+    kind: widget
+    category: acoes-navegacao
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/core/interaction
+      - gja/foundation/color
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-navigation-bar
+    name: "GjaNavigationBar"
+    kind: widget
+    category: acoes-navegacao
+    priority: P1
+    phase: 2
+    status: planned
+    depends_on:
+      - gja/core/interaction
+      - gja/widgets/gja-icon
+      - gja/widgets/gja-text
+      - gja/widgets/gja-badge
+  - id: gja/widgets/gja-side-navigation
+    name: "GjaSideNavigation"
+    kind: widget
+    category: acoes-navegacao
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/core/interaction
+      - gja/widgets/gja-tooltip
+      - gja/widgets/gja-separator
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-breadcrumbs
+    name: "GjaBreadcrumbs"
+    kind: widget
+    category: acoes-navegacao
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-link
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/spacing
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-icon-tab-bar
+    name: "GjaIconTabBar"
+    kind: widget
+    category: acoes-navegacao
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/core/interaction
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-pagination
+    name: "GjaPagination"
+    kind: widget
+    category: acoes-navegacao
+    priority: P2
+    phase: 3
+    status: planned
+    depends_on:
+      - gja/widgets/gja-button
+      - gja/widgets/gja-select
+  - id: gja/widgets/gja-form
+    name: "GjaForm"
+    kind: widget
+    category: formularios
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-label
+      - gja/widgets/gja-title
+      - gja/foundation/typography
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/breakpoints
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-input
+    name: "GjaInput"
+    kind: widget
+    category: formularios
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-tooltip
+      - gja/core/interaction
+      - gja/core/localization
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/spacing
+      - gja/foundation/radius
+      - gja/foundation/density
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-text-area
+    name: "GjaTextArea"
+    kind: widget
+    category: formularios
+    priority: P1
+    phase: 2
+    status: planned
+    depends_on:
+      - gja/widgets/gja-input
+  - id: gja/widgets/gja-check-box
+    name: "GjaCheckBox"
+    kind: widget
+    category: formularios
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/core/interaction
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/spacing
+      - gja/foundation/radius
+      - gja/foundation/density
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-radio-button
+    name: "GjaRadioButton"
+    kind: widget
+    category: formularios
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/core/interaction
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/spacing
+      - gja/foundation/radius
+      - gja/foundation/density
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-switch
+    name: "GjaSwitch"
+    kind: widget
+    category: formularios
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/core/interaction
+      - gja/foundation/color
+      - gja/foundation/iconography
+      - gja/foundation/radius
+      - gja/foundation/density
+      - gja/foundation/design-tokens
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-select
+    name: "GjaSelect"
+    kind: widget
+    category: formularios
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-dropdown
+      - gja/widgets/gja-popover
+      - gja/core/interaction
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/spacing
+      - gja/foundation/radius
+      - gja/foundation/density
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-search-field
+    name: "GjaSearchField"
+    kind: widget
+    category: formularios
+    priority: P2
+    phase: 3
+    status: planned
+    depends_on:
+      - gja/widgets/gja-input
+      - gja/widgets/gja-dropdown
+      - gja/core/data-source
+  - id: gja/widgets/gja-multi-select
+    name: "GjaMultiSelect"
+    kind: widget
+    category: formularios
+    priority: P2
+    phase: 3
+    status: planned
+    depends_on:
+      - gja/widgets/gja-select
+      - gja/widgets/gja-check-box
+      - gja/widgets/gja-badge
+  - id: gja/widgets/gja-date-picker
+    name: "GjaDatePicker"
+    kind: widget
+    category: formularios
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/core/interaction
+      - gja/core/localization
+      - gja/widgets/gja-input
+      - gja/widgets/gja-popover
+      - gja/widgets/gja-button
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-date-range-picker
+    name: "GjaDateRangePicker"
+    kind: widget
+    category: formularios
+    priority: P3
+    phase: 4
+    status: planned
+    depends_on:
+      - gja/widgets/gja-date-picker
+  - id: gja/widgets/gja-time-picker
+    name: "GjaTimePicker"
+    kind: widget
+    category: formularios
+    priority: P3
+    phase: 4
+    status: planned
+    depends_on:
+      - gja/widgets/gja-input
+      - gja/widgets/gja-popover
+      - gja/core/localization
+  - id: gja/widgets/gja-file-upload
+    name: "GjaFileUpload"
+    kind: widget
+    category: formularios
+    priority: P3
+    phase: 4
+    status: planned
+    depends_on:
+      - gja/widgets/gja-button
+      - gja/widgets/gja-progress-indicator
+      - gja/widgets/gja-list
+  - id: gja/widgets/gja-radio-button-group
+    name: "GjaRadioButtonGroup"
+    kind: widget
+    category: formularios
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-radio-button
+      - gja/core/interaction
+      - gja/foundation/color
+      - gja/foundation/theming
+  - id: gja/widgets/gja-progress-indicator
+    name: "GjaProgressIndicator"
+    kind: widget
+    category: exibicao-dados
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/core/localization
+      - gja/foundation/color
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/design-tokens
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-badge
+    name: "GjaBadge"
+    kind: widget
+    category: exibicao-dados
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/core/localization
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/spacing
+      - gja/foundation/radius
+      - gja/foundation/iconography
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-object-status
+    name: "GjaObjectStatus"
+    kind: widget
+    category: exibicao-dados
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-icon
+      - gja/widgets/gja-label
+      - gja/core/interaction
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/spacing
+      - gja/foundation/radius
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-avatar
+    name: "GjaAvatar"
+    kind: widget
+    category: exibicao-dados
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-icon
+      - gja/core/interaction
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/radius
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-tooltip
+    name: "GjaTooltip"
+    kind: widget
+    category: exibicao-dados
+    priority: P0
+    phase: 1
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-spacing
+      - gja/core/overlay
+      - gja/widgets/gja-text
+      - gja/widgets/gja-container
+      - gja/foundation/color
+      - gja/foundation/shadows
+      - gja/foundation/radius
+      - gja/foundation/spacing
+      - gja/foundation/design-tokens
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-skeleton
+    name: "GjaSkeleton"
+    kind: widget
+    category: exibicao-dados
+    priority: P2
+    phase: 3
+    status: planned
+    depends_on:
+      - gja/foundation/color
+  - id: gja/widgets/gja-illustrated-message
+    name: "GjaIllustratedMessage"
+    kind: widget
+    category: exibicao-dados
+    priority: P2
+    phase: 3
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-title
+      - gja/widgets/gja-text
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/spacing
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-error-state
+    name: "GjaErrorState"
+    kind: widget
+    category: exibicao-dados
+    priority: P2
+    phase: 3
+    status: planned
+    depends_on:
+      - gja/widgets/gja-icon
+      - gja/widgets/gja-text
+      - gja/widgets/gja-button
+  - id: gja/widgets/gja-list-tile
+    name: "GjaListTile"
+    kind: widget
+    category: exibicao-dados
+    priority: P2
+    phase: 3
+    status: planned
+    depends_on:
+      - gja/core/interaction
+      - gja/widgets/gja-text
+      - gja/widgets/gja-icon
+      - gja/widgets/gja-avatar
+  - id: gja/widgets/gja-list
+    name: "GjaList"
+    kind: widget
+    category: exibicao-dados
+    priority: P2
+    phase: 3
+    status: planned
+    depends_on:
+      - gja/widgets/gja-list-tile
+      - gja/core/data-source
+      - gja/widgets/gja-illustrated-message
+      - gja/widgets/gja-skeleton
+  - id: gja/widgets/gja-table
+    name: "GjaTable"
+    kind: widget
+    category: exibicao-dados
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/core/interaction
+      - gja/core/localization
+      - gja/widgets/gja-check-box
+      - gja/widgets/gja-title
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/breakpoints
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-data-grid
+    name: "GjaDataGrid"
+    kind: widget
+    category: exibicao-dados
+    priority: P3
+    phase: 4
+    status: planned
+    depends_on:
+      - gja/widgets/gja-table
+      - gja/widgets/gja-input
+      - gja/widgets/gja-select
+  - id: gja/widgets/gja-tree
+    name: "GjaTree"
+    kind: widget
+    category: exibicao-dados
+    priority: P3
+    phase: 4
+    status: planned
+    depends_on:
+      - gja/widgets/gja-list-tile
+      - gja/core/data-source
+  - id: gja/widgets/gja-popover
+    name: "GjaPopover"
+    kind: widget
+    category: feedback-sobreposicoes
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-spacing
+      - gja/core/overlay
+      - gja/core/interaction
+      - gja/widgets/gja-container
+      - gja/widgets/gja-title
+      - gja/widgets/gja-separator
+      - gja/foundation/color
+      - gja/foundation/spacing
+      - gja/foundation/radius
+      - gja/foundation/shadows
+      - gja/foundation/typography
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-dropdown
+    name: "GjaDropdown"
+    kind: widget
+    category: feedback-sobreposicoes
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-separator
+      - gja/widgets/gja-popover
+      - gja/widgets/gja-icon
+      - gja/core/interaction
+      - gja/foundation/color
+      - gja/foundation/spacing
+      - gja/foundation/density
+      - gja/foundation/typography
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-dialog
+    name: "GjaDialog"
+    kind: widget
+    category: feedback-sobreposicoes
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/core/overlay
+      - gja/widgets/gja-button
+      - gja/widgets/gja-container
+      - gja/widgets/gja-title
+      - gja/widgets/gja-separator
+      - gja/widgets/gja-spacing
+      - gja/foundation/color
+      - gja/foundation/spacing
+      - gja/foundation/radius
+      - gja/foundation/shadows
+      - gja/foundation/iconography
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-confirmation-dialog
+    name: "GjaConfirmationDialog"
+    kind: widget
+    category: feedback-sobreposicoes
+    priority: P1
+    phase: 2
+    status: planned
+    depends_on:
+      - gja/widgets/gja-dialog
+  - id: gja/widgets/gja-message-strip
+    name: "GjaMessageStrip"
+    kind: widget
+    category: feedback-sobreposicoes
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/widgets/gja-button
+      - gja/widgets/gja-link
+      - gja/core/localization
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/iconography
+      - gja/foundation/spacing
+      - gja/foundation/radius
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-message-toast
+    name: "GjaMessageToast"
+    kind: widget
+    category: feedback-sobreposicoes
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/spacing
+      - gja/foundation/radius
+      - gja/foundation/design-tokens
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-drawer
+    name: "GjaDrawer"
+    kind: widget
+    category: feedback-sobreposicoes
+    priority: P2
+    phase: 3
+    status: planned
+    depends_on:
+      - gja/core/overlay
+  - id: gja/widgets/gja-busy-indicator
+    name: "GjaBusyIndicator"
+    kind: widget
+    category: feedback-sobreposicoes
+    priority: P1
+    phase: 2
+    status: implemented
+    depends_on:
+      - gja/core/localization
+      - gja/foundation/color
+      - gja/foundation/typography
+      - gja/foundation/spacing
+      - gja/foundation/design-tokens
+      - gja/foundation/interaction-states
+      - gja/foundation/theming
+      - gja/foundation/accessibility
+  - id: gja/widgets/gja-notification
+    name: "GjaNotification"
+    kind: widget
+    category: feedback-sobreposicoes
+    priority: P3
+    phase: 4
+    status: planned
+    depends_on:
+      - gja/widgets/gja-popover
+      - gja/widgets/gja-list
+      - gja/widgets/gja-badge
+      - gja/widgets/gja-message-toast

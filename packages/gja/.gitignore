@@ -1,0 +1,15 @@
+# Flutter/Dart
+.dart_tool/
+.packages
+build/
+.flutter-plugins
+.flutter-plugins-dependencies
+pubspec_overrides.yaml
+coverage/
+*.iml
+.idea/
+.vscode/
+# Artefatos temporários das verificações
+tool/gja_checks/.test_tmp/
+# Falhas de golden
+**/failures/

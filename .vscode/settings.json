@@ -1,0 +1,17 @@
+{
+  // Terminal do projeto ja carrega o wrapper `flutter execCICDDesktop`
+  // (scripts/gja-shell.ps1). Vale para quem clonar o repo, sem config pessoal.
+  "terminal.integrated.profiles.windows": {
+    "PowerShell (GJA)": {
+      "source": "PowerShell",
+      "args": [
+        "-NoExit",
+        "-Command",
+        ". '${workspaceFolder}\\scripts\\gja-shell.ps1'"
+      ],
+      "icon": "terminal-powershell"
+    }
+  },
+  "terminal.integrated.defaultProfile.windows": "PowerShell (GJA)",
+  "cmake.sourceDirectory": "D:/portal-frontend-main 1/portal-frontend-main/windows"
+}

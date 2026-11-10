@@ -1,0 +1,18 @@
+name: gja_workspace
+description: "Workspace do framework de UI corporativa GJA."
+publish_to: none
+
+# Baseline provisória (ADR 0001): Flutter 3.32.6 / Dart 3.8.1.
+environment:
+  sdk: ^3.8.0
+
+workspace:
+  - packages/gja_foundation
+  - packages/gja_core
+  - packages/gja_widgets
+  - packages/gja_ui
+  - apps/gja_gallery
+  - tool/gja_checks
+
+dev_dependencies:
+  flutter_lints: ^5.0.0

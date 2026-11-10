@@ -1,0 +1,88 @@
+name: gjamobile
+description: "Portal GJA."
+publish_to: none
+
+version: 1.0.0+1
+
+# Baseline alinhada ao Rebic (ADR 0001): Flutter 3.32.6 / Dart 3.8.1.
+environment:
+  sdk: ^3.8.0
+  flutter: ">=3.32.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  flutter_web_plugins:
+    sdk: flutter
+
+  # Tema GJA: submodule em packages/gja (https://gitlab.com/TGUALBERTO/atualizacao-flutter.git).
+  gja_ui:
+    path: packages/gja/packages/gja_ui
+
+  app_version_update: any
+  auto_injector: any
+  cached_network_image: any
+  confetti: any
+  crypto: any
+  device_info_plus: any
+  dio: any
+  encrypted_shared_preferences: any
+  equatable: any
+  # 0.3.x trocou `ext` por `fileExtension`; o portal usa a API 0.2.x.
+  file_saver: ^0.2.14
+  flutter_animate: any
+  flutter_appauth: any
+  flutter_date_pickers: any
+  flutter_fireworks: any
+  flutter_markdown: any
+  flutter_native_splash: any
+  flutter_screenutil: any
+  flutter_svg: any
+  go_router: any
+  hive_ce_flutter: any
+  http: any
+  internet_connection_checker_plus: any
+  intl: any
+  logger: any
+  markdown: any
+  material_symbols_icons: any
+  mobile_scanner: any
+  package_info_plus: any
+  path_provider: any
+  permission_handler: any
+  result_dart: any
+  shared_preferences: any
+  signals_flutter: any
+  skeletonizer: any
+  smooth_page_indicator: any
+  snow_fall_animation: any
+  syncfusion_flutter_charts: any
+  syncfusion_flutter_core: any
+  syncfusion_flutter_datagrid: any
+  talker: any
+  talker_dio_logger: any
+  url_launcher: any
+  xml: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: any
+
+# gja_ui depende destes pacotes irmãos, que não estão no pub.dev.
+dependency_overrides:
+  gja_foundation:
+    path: packages/gja/packages/gja_foundation
+  gja_core:
+    path: packages/gja/packages/gja_core
+  gja_widgets:
+    path: packages/gja/packages/gja_widgets
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/icons/
+    - assets/images/
+    - assets/logos/

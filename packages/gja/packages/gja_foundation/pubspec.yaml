@@ -1,0 +1,34 @@
+name: gja_foundation
+description: "Fundamentos do GJA: design tokens, tema, breakpoints, densidade e estados semânticos."
+version: 0.0.1
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: ^3.8.0
+  flutter: ">=3.32.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+# Fontes empacotadas. Inter: spec gja/foundation/typography (licença em fonts/inter/OFL.txt).
+flutter:
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: fonts/inter/Inter-Regular.ttf
+        - asset: fonts/inter/Inter-Medium.ttf
+          weight: 500
+        - asset: fonts/inter/Inter-SemiBold.ttf
+          weight: 600
+        - asset: fonts/inter/Inter-Bold.ttf
+          weight: 700
+    # Ícones (spec gja/foundation/iconography; licença em fonts/lucide/LICENSE).
+    - family: Lucide
+      fonts:
+        - asset: fonts/lucide/lucide.ttf

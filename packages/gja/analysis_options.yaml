@@ -1,0 +1,15 @@
+# Lints compartilhados por todos os pacotes do workspace GJA.
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  language:
+    strict-casts: true
+    strict-raw-types: true
+  exclude:
+    - "**/build/**"
+    - tool/gja_checks/.test_tmp/**
+    - tool/gja_checks/test/fixtures/**
+
+linter:
+  rules:
+    - public_member_api_docs

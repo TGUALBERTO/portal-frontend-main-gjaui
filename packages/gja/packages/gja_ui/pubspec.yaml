@@ -1,0 +1,19 @@
+name: gja_ui
+description: "Ponto de entrada do framework GJA: reexporta fundamentos, núcleo e widgets."
+version: 0.0.1
+publish_to: none
+resolution: workspace
+
+environment:
+  sdk: ^3.8.0
+  flutter: ">=3.32.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  gja_foundation: ^0.0.1
+  gja_core: ^0.0.1
+  gja_widgets: ^0.0.1
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
